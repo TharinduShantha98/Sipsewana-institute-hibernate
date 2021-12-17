@@ -6,25 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.secondSem.hibernate.controller.DashBordFormController">
+<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.secondSem.hibernate.controller.DashBordFormController">
    <children>
       <Label layoutX="234.0" layoutY="5.0" prefHeight="94.0" prefWidth="565.0" text="Sipsewana institute" textFill="#3659b2">
          <font>
             <Font name="Bodoni MT Bold" size="65.0" />
          </font>
       </Label>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="89.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="studentReg" fitHeight="200.0" fitWidth="200.0" layoutX="89.0" layoutY="290.0" onMouseClicked="#mouseClickedOnAction" onMouseEntered="#mouseEnteredOnAction" onMouseExited="#mouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/students.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="381.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="studentCourse" fitHeight="200.0" fitWidth="200.0" layoutX="381.0" layoutY="290.0" onMouseClicked="#mouseClickedOnAction" onMouseEntered="#mouseEnteredOnAction" onMouseExited="#mouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/courses.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="705.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="courses" fitHeight="200.0" fitWidth="200.0" layoutX="705.0" layoutY="300.0" onMouseClicked="#mouseClickedOnAction" onMouseEntered="#mouseEnteredOnAction" onMouseExited="#mouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/coursesList.png" />
          </image>
@@ -44,22 +43,22 @@
             <Image url="@assets/date.png" />
          </image>
       </ImageView>
-      <Label layoutX="145.0" layoutY="95.0" prefHeight="37.0" prefWidth="145.0" text="08:21">
+      <Label fx:id="lblTime" layoutX="145.0" layoutY="95.0" prefHeight="37.0" prefWidth="145.0" text="08:21">
          <font>
             <Font name="System Bold" size="38.0" />
          </font>
       </Label>
-      <Label layoutX="145.0" layoutY="171.0" prefHeight="55.0" prefWidth="266.0" text="2021/16/12">
+      <Label fx:id="lblDate" layoutX="145.0" layoutY="171.0" prefHeight="55.0" prefWidth="266.0" text="2021/16/12">
          <font>
             <Font name="System Bold" size="38.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="326.0" layoutY="530.0" prefHeight="27.0" prefWidth="333.0" text="WELCOME" textAlignment="CENTER" textFill="#30829e">
+      <Label fx:id="lblTittle" alignment="CENTER" layoutX="326.0" layoutY="530.0" prefHeight="27.0" prefWidth="333.0" text="WELCOME" textAlignment="CENTER" textFill="#30829e">
          <font>
             <Font name="Bodoni MT Bold" size="32.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="158.0" layoutY="587.0" prefHeight="39.0" prefWidth="646.0" text="Please select one of above operations to proceed" textAlignment="CENTER" textFill="#30829e">
+      <Label fx:id="lblDescription" alignment="CENTER" layoutX="158.0" layoutY="587.0" prefHeight="39.0" prefWidth="646.0" text="Please select one of above operations to proceed" textAlignment="CENTER" textFill="#30829e">
          <font>
             <Font name="Bodoni MT Bold" size="22.0" />
          </font>

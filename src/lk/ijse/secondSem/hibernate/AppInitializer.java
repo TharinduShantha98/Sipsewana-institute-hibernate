@@ -2,6 +2,7 @@ package lk.ijse.secondSem.hibernate;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -19,6 +20,9 @@ public class AppInitializer extends Application {
         primaryStage.setTitle("sipsewana institute");
         primaryStage.centerOnScreen();
         primaryStage.show();
+
+
+
 
     }
 }
