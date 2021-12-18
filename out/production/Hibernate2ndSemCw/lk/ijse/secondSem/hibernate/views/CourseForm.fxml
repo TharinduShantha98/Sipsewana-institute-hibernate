@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.secondSem.hibernate.controller.CourseFormController">
    <children>
       <Label layoutX="340.0" layoutY="14.0" text="Course program">
@@ -18,15 +17,15 @@
             <Font name="Bodoni MT Bold" size="40.0" />
          </font>
       </Label>
-      <JFXTextField labelFloat="true" layoutX="57.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="program Id" />
-      <JFXTextField labelFloat="true" layoutX="355.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="program" />
-      <JFXTextField labelFloat="true" layoutX="665.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="duration" />
-      <JFXTextField labelFloat="true" layoutX="57.0" layoutY="184.0" prefHeight="31.0" prefWidth="232.0" promptText="Fee (LKR)" />
-      <JFXButton layoutX="819.0" layoutY="187.0" style="-fx-background-color: #2ecc71;" text="Add Program" />
-      <JFXTextField labelFloat="true" layoutX="355.0" layoutY="185.0" prefHeight="31.0" prefWidth="376.0" promptText="search" />
+      <JFXTextField fx:id="TxtProgramId" labelFloat="true" layoutX="57.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="program Id" />
+      <JFXTextField fx:id="TxtProgram" labelFloat="true" layoutX="355.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="program" />
+      <JFXTextField fx:id="TxtDuration" labelFloat="true" layoutX="665.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="duration" />
+      <JFXTextField fx:id="txtFee" labelFloat="true" layoutX="57.0" layoutY="184.0" prefHeight="31.0" prefWidth="232.0" promptText="Fee (LKR)" />
+      <JFXButton layoutX="819.0" layoutY="187.0" onAction="#addProgramOnAction" style="-fx-background-color: #2ecc71;" text="Add Program" />
+      <JFXTextField fx:id="txtSearchProId" labelFloat="true" layoutX="355.0" layoutY="185.0" prefHeight="31.0" prefWidth="376.0" promptText="search" />
       <TableView layoutX="57.0" layoutY="301.0" prefHeight="200.0" prefWidth="864.0">
         <columns>
-          <TableColumn prefWidth="178.0" text="prograam Id " />
+          <TableColumn prefWidth="178.0" text="program Id " />
           <TableColumn prefWidth="231.0" text="program" />
             <TableColumn prefWidth="223.0" text="duration" />
             <TableColumn prefWidth="231.0" text="Fee(LKR)" />

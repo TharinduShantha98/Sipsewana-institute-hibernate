@@ -98,14 +98,12 @@ public class DashBordFormController {
                    root = FXMLLoader.load(this.getClass().getResource("../views/StudentAddForm.fxml"));
                    break;
                 case "studentCourse":
-
+                    break;
                 case "courses":
                     root = FXMLLoader.load(this.getClass().getResource("../views/CourseForm.fxml"));
                     break;
 
             }
-
-
 
             if(root != null){
                 Scene scene = new Scene(root);
