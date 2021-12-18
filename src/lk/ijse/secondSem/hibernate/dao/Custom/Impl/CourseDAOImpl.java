@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import java.io.Serializable;
+import java.util.List;
 
 public class CourseDAOImpl implements CourseDAO {
 
@@ -18,9 +19,8 @@ public class CourseDAOImpl implements CourseDAO {
 
    }
 
-
     @Override
-    public boolean addCourse(Course course) {
+    public boolean add(Course course) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Serializable save =session.save(course);
@@ -29,6 +29,31 @@ public class CourseDAOImpl implements CourseDAO {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean update(Course course) {
+        return false;
+    }
+
+    @Override
+    public boolean delete(Course course) {
+        return false;
+    }
+
+    @Override
+    public List<Course> getAll() {
+        return null;
+    }
+
+    @Override
+    public Course search(String s) {
+        Course course;
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        course = session.get(Course.class, s);
+        transaction.commit();
+        return course;
 
     }
 }

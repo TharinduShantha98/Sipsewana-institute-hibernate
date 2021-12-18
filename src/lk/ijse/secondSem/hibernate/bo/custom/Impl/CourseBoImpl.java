@@ -10,9 +10,22 @@ public class CourseBoImpl  implements CourseBo {
 
     CourseDAO courseDAO = new CourseDAOImpl();
 
+
     @Override
     public boolean addCourse(CourseDTO courseDTO) {
-       return  courseDAO.addCourse(new Course(courseDTO.getProgramId(),courseDTO.getProgram(), courseDTO.getDuration(),
+       return  courseDAO.add(new Course(courseDTO.getProgramId(),courseDTO.getProgram(), courseDTO.getDuration(),
                courseDTO.getFee()));
+    }
+
+    @Override
+    public CourseDTO searchCourse(String courseId) {
+       Course course = courseDAO.search(courseId);
+       return new CourseDTO(course.getProgramId(),course.getProgram(),course.getDuration(),
+               course.getFee());
+    }
+
+    @Override
+    public boolean deleteCourse(String courseId) {
+        return false;
     }
 }
