@@ -21,14 +21,14 @@
       <JFXTextField fx:id="TxtProgram" labelFloat="true" layoutX="355.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="program" />
       <JFXTextField fx:id="TxtDuration" labelFloat="true" layoutX="665.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="duration" />
       <JFXTextField fx:id="txtFee" labelFloat="true" layoutX="57.0" layoutY="184.0" prefHeight="31.0" prefWidth="232.0" promptText="Fee (LKR)" />
-      <JFXButton layoutX="626.0" layoutY="187.0" onAction="#addProgramOnAction" style="-fx-background-color: #2ecc71;" text="Add Program" />
-      <JFXTextField fx:id="txtSearchProId" labelFloat="true" layoutX="355.0" layoutY="185.0" onAction="#searchCourseId_onAction" prefHeight="31.0" prefWidth="208.0" promptText="search Course Id " />
-      <TableView layoutX="57.0" layoutY="301.0" prefHeight="200.0" prefWidth="864.0">
+      <JFXButton layoutX="340.0" layoutY="250.0" onAction="#addProgramOnAction" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #2ecc71;" text="Add Program" />
+      <JFXTextField fx:id="txtSearchProId" labelFloat="true" layoutX="57.0" layoutY="243.0" onAction="#searchCourseId_onAction" prefHeight="31.0" prefWidth="208.0" promptText="search Course Id " />
+      <TableView fx:id="tblCourse" layoutX="57.0" layoutY="301.0" prefHeight="200.0" prefWidth="864.0">
         <columns>
-          <TableColumn prefWidth="178.0" text="program Id " />
-          <TableColumn prefWidth="231.0" text="program" />
-            <TableColumn prefWidth="223.0" text="duration" />
-            <TableColumn prefWidth="231.0" text="Fee(LKR)" />
+          <TableColumn fx:id="colProgramId" prefWidth="178.0" text="program Id " />
+          <TableColumn fx:id="colProgram" prefWidth="231.0" text="program" />
+            <TableColumn fx:id="colDuration" prefWidth="223.0" text="duration" />
+            <TableColumn fx:id="colFee" prefWidth="231.0" text="Fee(LKR)" />
         </columns>
       </TableView>
       <ImageView fitHeight="84.0" fitWidth="141.0" layoutX="608.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -36,11 +36,12 @@
             <Image url="@assets/5.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="763.0" layoutY="187.0" onAction="#DeleteProgramOnAction" style="-fx-background-color: #2ecc71;" text="delete Program" />
+      <JFXButton layoutX="498.0" layoutY="249.0" onAction="#DeleteProgramOnAction" style="-fx-background-color: #2ecc71;" text="delete Program" />
       <ImageView fx:id="updateTextFiled" fitHeight="96.0" fitWidth="76.0" layoutX="897.0" layoutY="18.0" onMouseClicked="#updateTextFiledOnAction" onMouseEntered="#mouseEnteredOnAction" onMouseExited="#mouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/update2.png" />
          </image>
       </ImageView>
+      <JFXButton layoutX="650.0" layoutY="249.0" onAction="#updateProgramOnAction" style="-fx-background-color: #2ecc71;" text="update Program" />
    </children>
 </AnchorPane>

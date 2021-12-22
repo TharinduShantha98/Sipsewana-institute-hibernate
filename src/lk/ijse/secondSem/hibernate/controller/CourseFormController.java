@@ -2,8 +2,14 @@ package lk.ijse.secondSem.hibernate.controller;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.ScaleTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -13,7 +19,7 @@ import lk.ijse.secondSem.hibernate.bo.custom.CourseBo;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.CourseBoImpl;
 import lk.ijse.secondSem.hibernate.dto.CourseDTO;
 
-
+import java.util.List;
 
 
 public class CourseFormController {
@@ -23,8 +29,24 @@ public class CourseFormController {
     public JFXTextField txtFee;
     public JFXTextField txtSearchProId;
     public ImageView updateTextFiled;
+    public TableView<CourseDTO> tblCourse;
+    public TableColumn colProgramId;
+    public TableColumn colProgram;
+    public TableColumn colDuration;
+    public TableColumn colFee;
+
+    public void  initialize(){
+
+        colProgramId.setCellValueFactory(new PropertyValueFactory<>("programId"));
+        colProgram.setCellValueFactory(new PropertyValueFactory<>("program"));
+        colDuration.setCellValueFactory(new PropertyValueFactory<>("Duration"));
+        colFee.setCellValueFactory(new PropertyValueFactory<>("fee"));
+
+        getAllCourse();
 
 
+
+    }
 
     private CourseBo courseBo = new CourseBoImpl();
 
@@ -56,18 +78,31 @@ public class CourseFormController {
 
     }
 
+
     public void DeleteProgramOnAction(ActionEvent actionEvent) {
+        CourseDTO courseDTO = new CourseDTO(TxtProgramId.getText(),TxtProgram.getText(),
+                TxtDuration.getText(),Double.parseDouble(txtFee.getText()));
+        boolean b = courseBo.deleteCourse(courseDTO);
 
+        Alert alert;
+        if(b){
+            alert = new Alert(Alert.AlertType.CONFIRMATION, "successFul delete ");
 
-
+        }else{
+            alert = new Alert(Alert.AlertType.WARNING, "not successFul delete");
+        }
+        alert.show();
     }
 
 
+    private void  getAllCourse(){
+        List<CourseDTO> all = courseBo.getAll();
+        ObservableList<CourseDTO> observableList = FXCollections.observableArrayList();
+        observableList.addAll(all);
 
+        tblCourse.setItems(observableList);
 
-
-
-
+    }
 
 
 
@@ -80,6 +115,7 @@ public class CourseFormController {
         TxtDuration.clear();
         txtFee.clear();
         txtSearchProId.clear();
+        getAllCourse();
 
     }
 
@@ -97,7 +133,6 @@ public class CourseFormController {
             glow.setHeight(20);
             glow.setRadius(20);
             icon.setEffect(glow);
-
         }
 
     }
@@ -110,6 +145,10 @@ public class CourseFormController {
         scaleTransition.play();
         icon.setEffect(null);
 
+
+    }
+
+    public void updateProgramOnAction(ActionEvent actionEvent) {
 
     }
 }
