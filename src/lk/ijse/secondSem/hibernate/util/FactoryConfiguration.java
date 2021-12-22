@@ -2,6 +2,8 @@ package lk.ijse.secondSem.hibernate.util;
 
 
 import lk.ijse.secondSem.hibernate.entity.Course;
+import lk.ijse.secondSem.hibernate.entity.Student;
+import lk.ijse.secondSem.hibernate.entity.StudentCourse;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -19,12 +21,13 @@ public class FactoryConfiguration {
 
         Metadata mData=new MetadataSources(sReg)
                 .addAnnotatedClass(Course.class)
+                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(StudentCourse.class)
                 .getMetadataBuilder().build();
 
         return mData.getSessionFactoryBuilder().build();
 
     }
-
 
     public  static SessionFactory getSessionFactory(){
         return sessionFactory;
