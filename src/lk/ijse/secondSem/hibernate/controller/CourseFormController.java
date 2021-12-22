@@ -73,7 +73,7 @@ public class CourseFormController {
         CourseDTO courseDTO = courseBo.searchCourse(txtSearchProId.getText());
         TxtProgram.setText(courseDTO.getProgram());
         TxtProgramId.setText(courseDTO.getProgramId());
-        TxtDuration.setText(courseDTO.getProgramId());
+        TxtDuration.setText(courseDTO.getDuration());
         txtFee.setText(String.valueOf(courseDTO.getFee()));
 
     }
@@ -101,6 +101,23 @@ public class CourseFormController {
         observableList.addAll(all);
 
         tblCourse.setItems(observableList);
+
+    }
+
+    public void updateProgramOnAction(ActionEvent actionEvent) {
+        CourseDTO courseDTO = new CourseDTO(TxtProgramId.getText(),TxtProgram.getText(),
+                TxtDuration.getText(),Double.parseDouble(txtFee.getText()));
+
+        boolean b = courseBo.updateCourse(courseDTO);
+
+        Alert alert;
+        if(b){
+            alert = new Alert(Alert.AlertType.CONFIRMATION, " update successFul  ");
+
+        }else{
+            alert = new Alert(Alert.AlertType.WARNING, " update not successFul");
+        }
+        alert.show();
 
     }
 
@@ -148,7 +165,5 @@ public class CourseFormController {
 
     }
 
-    public void updateProgramOnAction(ActionEvent actionEvent) {
 
-    }
 }

@@ -9,6 +9,7 @@ public interface CourseBo {
     CourseDTO searchCourse(String courseId);
     boolean deleteCourse(CourseDTO courseDTO);
     List<CourseDTO> getAll();
+    boolean updateCourse(CourseDTO courseDTO);
 
 
 

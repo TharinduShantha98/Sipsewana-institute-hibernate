@@ -46,4 +46,12 @@ public class CourseBoImpl  implements CourseBo {
         }
         return allCourse;
     }
+
+    @Override
+    public boolean updateCourse(CourseDTO courseDTO) {
+        boolean update = courseDAO.update(new Course(courseDTO.getProgramId(), courseDTO.getProgram(),
+                courseDTO.getDuration(), courseDTO.getFee()));
+
+        return update;
+    }
 }

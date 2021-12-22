@@ -1,14 +1,22 @@
 package lk.ijse.secondSem.hibernate.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "course")
 public class Course {
     @Id
-    String programId;
-    String program;
-    String Duration;
-    double fee;
+    private String programId;
+    private String program;
+    private String Duration;
+    private double fee;
+
+    @OneToMany(mappedBy = "course")
+    private Set<StudentCourse> studentCourses = new HashSet<StudentCourse>();
+
 
 
     public Course(String programId, String program, String duration, double fee) {
@@ -19,6 +27,15 @@ public class Course {
     }
 
     public Course() {
+    }
+
+    public Course(String programId, String program, String duration,
+                  double fee, Set<StudentCourse> studentCourses) {
+        this.programId = programId;
+        this.program = program;
+        Duration = duration;
+        this.fee = fee;
+        this.studentCourses = studentCourses;
     }
 
     public String getProgramId() {
@@ -51,6 +68,14 @@ public class Course {
 
     public void setFee(double fee) {
         this.fee = fee;
+    }
+
+    public Set<StudentCourse> getStudentCourses() {
+        return studentCourses;
+    }
+
+    public void setStudentCourses(Set<StudentCourse> studentCourses) {
+        this.studentCourses = studentCourses;
     }
 
     @Override
