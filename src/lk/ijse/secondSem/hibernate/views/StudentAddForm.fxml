@@ -13,12 +13,12 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.secondSem.hibernate.controller.StudentAddFormController">
    <children>
-      <Label layoutX="295.0" layoutY="14.0" text="Student registration form">
+      <Label layoutX="322.0" layoutY="2.0" text="Student registration form">
          <font>
-            <Font name="Bodoni MT Bold" size="40.0" />
+            <Font name="Bodoni MT Bold" size="48.0" />
          </font>
       </Label>
-      <ImageView fitHeight="253.0" fitWidth="236.0" layoutX="764.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="253.0" fitWidth="236.0" layoutX="764.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/7.png" />
          </image>
@@ -26,30 +26,40 @@
       <JFXTextField fx:id="txtFirstName" labelFloat="true" layoutX="21.0" layoutY="76.0" prefHeight="31.0" prefWidth="356.0" promptText="Student First Name " />
       <JFXTextField fx:id="txtLastName" labelFloat="true" layoutX="407.0" layoutY="76.0" prefHeight="31.0" prefWidth="346.0" promptText="Student Last Name " />
       <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="21.0" layoutY="133.0" prefHeight="31.0" prefWidth="356.0" promptText="Address" />
-      <JFXComboBox fx:id="cmbCourseId" labelFloat="true" layoutX="237.0" layoutY="201.0" prefHeight="31.0" prefWidth="178.0" promptText="course Id" />
+      <JFXComboBox fx:id="cmbCourseId" labelFloat="true" layoutX="237.0" layoutY="201.0" onAction="#getCourseDetail" prefHeight="31.0" prefWidth="178.0" promptText="course Id" />
       <JFXTextField fx:id="txtIdNumber" labelFloat="true" layoutX="409.0" layoutY="133.0" prefHeight="31.0" prefWidth="206.0" promptText="Id Number" />
       <JFXComboBox fx:id="cmbGender" labelFloat="true" layoutX="21.0" layoutY="205.0" prefHeight="31.0" prefWidth="178.0" promptText="Gender" />
-      <JFXButton layoutX="502.0" layoutY="201.0" onAction="#AddCartOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71;" text="Add detail" />
-      <TableView layoutX="10.0" layoutY="293.0" prefHeight="125.0" prefWidth="801.0">
+      <JFXButton layoutX="502.0" layoutY="186.0" onAction="#AddCartOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71;" text="Add detail" />
+      <TableView fx:id="tblCart" layoutX="10.0" layoutY="293.0" prefHeight="125.0" prefWidth="801.0">
         <columns>
-          <TableColumn prefWidth="172.0" text="name " />
-          <TableColumn prefWidth="155.0" text="id Number " />
-            <TableColumn prefWidth="120.0" text="course Id " />
-            <TableColumn prefWidth="140.0" text="course name " />
-            <TableColumn prefWidth="212.0" text="Fee(LKR)" />
+            <TableColumn fx:id="colCourseId" prefWidth="120.0" text="course Id " />
+            <TableColumn fx:id="colCourseName" prefWidth="238.0" text="course name " />
+            <TableColumn fx:id="colCourseDuration" prefWidth="226.0" text="course duration" />
+            <TableColumn fx:id="colFee" prefWidth="215.0" text="Fee(LKR)" />
         </columns>
       </TableView>
-      <JFXButton layoutX="818.0" layoutY="293.0" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71;" text="Save" />
-      <JFXButton layoutX="818.0" layoutY="335.0" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71;" text="Save" />
+      <JFXButton layoutX="818.0" layoutY="293.0" onAction="#saveOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71;" text="Save" />
+      <JFXButton layoutX="818.0" layoutY="335.0" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71;" />
       <Label layoutX="25.0" layoutY="438.0" text="Total Fee /=">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="227.0" layoutY="438.0" prefHeight="47.0" prefWidth="276.0" text="000000">
+      <Label fx:id="lblTotalFee" layoutX="227.0" layoutY="438.0" prefHeight="47.0" prefWidth="276.0" text="000000">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
+      <Label fx:id="lblDate" layoutX="21.0" layoutY="22.0" prefHeight="21.0" prefWidth="120.0" text="2021:12:22">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" layoutX="148.0" layoutY="21.0" prefHeight="21.0" prefWidth="120.0" text="12:12">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtSId" layoutX="217.0" layoutY="16.0" prefHeight="31.0" prefWidth="92.0" promptText="s Id" />
    </children>
 </AnchorPane>

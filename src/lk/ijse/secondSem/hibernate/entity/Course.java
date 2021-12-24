@@ -1,4 +1,5 @@
 package lk.ijse.secondSem.hibernate.entity;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -14,10 +15,8 @@ public class Course {
     private String Duration;
     private double fee;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
     private Set<StudentCourse> studentCourses = new HashSet<StudentCourse>();
-
-
 
     public Course(String programId, String program, String duration, double fee) {
         this.programId = programId;

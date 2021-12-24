@@ -8,6 +8,8 @@ public class CourseDTO {
     double fee;
 
 
+
+
     public CourseDTO(String programId, String program, String duration, double fee) {
         this.programId = programId;
         this.program = program;

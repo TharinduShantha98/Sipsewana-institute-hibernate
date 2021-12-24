@@ -1,14 +1,17 @@
 package lk.ijse.secondSem.hibernate.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "student")
 public class Student {
-    @GeneratedValue
+
     @Id
+    @GeneratedValue
     private long studentId;
     private String studentFName;
     private String studentLName;
@@ -16,13 +19,12 @@ public class Student {
     private String idNumber;
     private String gender;
 
-    @OneToMany(mappedBy = "student")
-    Set<StudentCourse> studentCourses = new HashSet<StudentCourse>();
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private  List<StudentCourse> studentCourses = new ArrayList<>();
 
 
-    public Student(long studentId, String studentFName, String studentLName,
-                   String address, String idNumber, String gender,
-                   Set<StudentCourse> studentCourses) {
+    public Student(long studentId, String studentFName, String studentLName, String address,
+                   String idNumber, String gender, ArrayList<StudentCourse> studentCourses) {
         this.studentId = studentId;
         this.studentFName = studentFName;
         this.studentLName = studentLName;
@@ -93,11 +95,11 @@ public class Student {
         this.gender = gender;
     }
 
-    public Set<StudentCourse> getStudentCourses() {
+    public List<StudentCourse> getStudentCourses() {
         return studentCourses;
     }
 
-    public void setStudentCourses(Set<StudentCourse> studentCourses) {
+    public void setStudentCourses(List<StudentCourse> studentCourses) {
         this.studentCourses = studentCourses;
     }
 }

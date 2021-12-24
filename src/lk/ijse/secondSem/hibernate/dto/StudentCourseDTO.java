@@ -6,13 +6,20 @@ import lk.ijse.secondSem.hibernate.entity.Student;
 public class StudentCourseDTO{
 
     private long id;
-    private Student student;
-    private Course course;
+    private StudentDTO student;
+    private CourseDTO course;
     private String date;
     private  String time;
 
 
-    public StudentCourseDTO(long id, Student student, Course course, String date, String time) {
+    public StudentCourseDTO(StudentDTO student, CourseDTO course, String date, String time) {
+        this.student = student;
+        this.course = course;
+        this.date = date;
+        this.time = time;
+    }
+
+    public StudentCourseDTO(long id, StudentDTO student, CourseDTO course, String date, String time) {
         this.id = id;
         this.student = student;
         this.course = course;
@@ -31,19 +38,19 @@ public class StudentCourseDTO{
         this.id = id;
     }
 
-    public Student getStudent() {
+    public StudentDTO getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(StudentDTO student) {
         this.student = student;
     }
 
-    public Course getCourse() {
+    public CourseDTO getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
+    public void setCourse(CourseDTO course) {
         this.course = course;
     }
 

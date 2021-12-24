@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class StudentCourse {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -23,6 +23,13 @@ public class StudentCourse {
     private String date;
     private  String time;
 
+
+    public StudentCourse(Student student, Course course, String date, String time) {
+        this.student = student;
+        this.course = course;
+        this.date = date;
+        this.time = time;
+    }
 
     public StudentCourse(long id, Student student, Course course, String date, String time) {
         this.id = id;
