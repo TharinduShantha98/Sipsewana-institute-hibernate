@@ -7,6 +7,7 @@ public class StudentDTO {
     private String Address;
     private String idNumber;
     private String gender;
+    private double totalFee;
 
 
 
@@ -14,13 +15,14 @@ public class StudentDTO {
 
 
     public StudentDTO(long studentId, String studentFName,
-                      String studentLName, String address, String idNumber, String gender) {
+                      String studentLName, String address, String idNumber, String gender,double totalFee) {
         this.studentId = studentId;
         this.studentFName = studentFName;
         this.studentLName = studentLName;
         Address = address;
         this.idNumber = idNumber;
         this.gender = gender;
+        this.totalFee = totalFee;
     }
 
     public StudentDTO() {
@@ -72,5 +74,13 @@ public class StudentDTO {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public double getTotalFee() {
+        return totalFee;
+    }
+
+    public void setTotalFee(double totalFee) {
+        this.totalFee = totalFee;
     }
 }

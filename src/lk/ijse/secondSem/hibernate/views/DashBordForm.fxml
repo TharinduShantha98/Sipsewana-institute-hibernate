@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.secondSem.hibernate.controller.DashBordFormController">
+<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles/backGround.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.secondSem.hibernate.controller.DashBordFormController">
    <children>
-      <Label layoutX="234.0" layoutY="5.0" prefHeight="94.0" prefWidth="565.0" text="Sipsewana institute" textFill="#3659b2">
+      <Label layoutX="342.0" prefHeight="94.0" prefWidth="303.0" text="Sipsewana " textFill="#1c50d3">
          <font>
-            <Font name="Bodoni MT Bold" size="65.0" />
+            <Font name="Bodoni MT Bold" size="66.0" />
          </font>
       </Label>
       <ImageView fx:id="studentReg" fitHeight="200.0" fitWidth="200.0" layoutX="89.0" layoutY="290.0" onMouseClicked="#mouseClickedOnAction" onMouseEntered="#mouseEnteredOnAction" onMouseExited="#mouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
@@ -28,7 +29,7 @@
             <Image url="@assets/coursesList.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="94.0" fitWidth="150.0" layoutX="758.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="94.0" fitWidth="150.0" layoutX="632.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/degree.png" />
          </image>
@@ -53,15 +54,24 @@
             <Font name="System Bold" size="38.0" />
          </font>
       </Label>
-      <Label fx:id="lblTittle" alignment="CENTER" layoutX="326.0" layoutY="530.0" prefHeight="27.0" prefWidth="333.0" text="WELCOME" textAlignment="CENTER" textFill="#30829e">
+      <Label fx:id="lblTittle" alignment="CENTER" layoutX="326.0" layoutY="530.0" prefHeight="27.0" prefWidth="333.0" text="WELCOME" textAlignment="CENTER" textFill="#161717">
          <font>
             <Font name="Bodoni MT Bold" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="lblDescription" alignment="CENTER" layoutX="158.0" layoutY="587.0" prefHeight="39.0" prefWidth="646.0" text="Please select one of above operations to proceed" textAlignment="CENTER" textFill="#30829e">
+      <Label fx:id="lblDescription" alignment="CENTER" layoutX="158.0" layoutY="587.0" prefHeight="39.0" prefWidth="646.0" text="Please select one of above operations to proceed" textAlignment="CENTER" textFill="#282b2c">
          <font>
             <Font name="Bodoni MT Bold" size="22.0" />
          </font>
       </Label>
+      <Label layoutX="407.0" layoutY="64.0" prefHeight="94.0" prefWidth="172.0" text="institute" textFill="#1c50d3">
+         <font>
+            <Font name="Bodoni MT Bold" size="46.0" />
+         </font>
+      </Label>
    </children>
+   <styleClass>
+      <String fx:value="root" />
+      <String fx:value="root2" />
+   </styleClass>
 </AnchorPane>

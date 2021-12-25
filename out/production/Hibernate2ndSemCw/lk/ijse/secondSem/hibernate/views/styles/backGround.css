@@ -1,0 +1,18 @@
+.root{
+    -fx-background-image:url('../assets/design1.png');
+    -fx-background-size:cover;
+
+}
+
+.root2{
+    -fx-background-image:url('../assets/design2.png');
+    -fx-background-size:cover;
+
+
+}
+.root3{
+    -fx-background-image:url('../assets/design3.png');
+    -fx-background-size:cover;
+
+
+}

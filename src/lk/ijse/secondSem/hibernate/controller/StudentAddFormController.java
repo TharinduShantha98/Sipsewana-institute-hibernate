@@ -6,11 +6,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import lk.ijse.secondSem.hibernate.bo.custom.CourseBo;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.CourseBoImpl;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.StudentBoImpl;
@@ -23,6 +28,7 @@ import lk.ijse.secondSem.hibernate.entity.Student;
 import lk.ijse.secondSem.hibernate.util.DateTime;
 import lk.ijse.secondSem.hibernate.views.tm.CartTM;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +49,8 @@ public class StudentAddFormController {
     public Label lblTotalFee;
     public Label lblDate;
     public Label lblTime;
-    public JFXTextField txtSId;
+    public AnchorPane studentA;
+
 
 
 
@@ -104,7 +111,23 @@ public class StudentAddFormController {
          tblCart.setItems(cartTMObservableList);
          tblCart.refresh();
 
+        createTotalFeeForStudent();
+
     }
+    private void createTotalFeeForStudent(){
+        double totalFee =0;
+
+        for (CartTM e1:cartTMObservableList
+             ) {
+            totalFee = totalFee + e1.getFee();
+            System.out.println(totalFee);
+        }
+        lblTotalFee.setText(String.valueOf(totalFee));
+    }
+
+
+
+
 
     private void setTimeAndDate(){
         dateTime.setTimeAndData(lblDate,lblTime);
@@ -115,14 +138,22 @@ public class StudentAddFormController {
     StudentCourseDTO studentCourseDTO  = new StudentCourseDTO();
 
     private StudentDTO getStudent(){
-        StudentDTO student =  new StudentDTO();
-        student.setStudentFName(txtFirstName.getText());
-        student.setStudentLName(txtLastName.getText());
-        student.setAddress(txtAddress.getText());
-        student.setIdNumber(txtIdNumber.getText());
-        student.setGender(cmbGender.getValue());
 
-        return student;
+
+        if(Double.parseDouble(lblTotalFee.getText())!= 0){
+
+            StudentDTO student =  new StudentDTO();
+            student.setStudentFName(txtFirstName.getText());
+            student.setStudentLName(txtLastName.getText());
+            student.setAddress(txtAddress.getText());
+            student.setIdNumber(txtIdNumber.getText());
+            student.setGender(cmbGender.getValue());
+            student.setTotalFee(Double.parseDouble(lblTotalFee.getText()));
+            return student;
+        }
+
+        return null;
+
 
     }
 
@@ -150,7 +181,14 @@ public class StudentAddFormController {
         }
 
 
-
-
     }
+
+    public void backHomeOnAction(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("../views/DashBordForm.fxml"));
+        Scene scene = new Scene(root);
+        Stage primaryStage = (Stage) this.studentA.getScene().getWindow();
+        primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
+    }
+
 }

@@ -98,6 +98,7 @@ public class DashBordFormController {
                    root = FXMLLoader.load(this.getClass().getResource("../views/StudentAddForm.fxml"));
                    break;
                 case "studentCourse":
+                    root= FXMLLoader.load(this.getClass().getResource("../views/StudentCourseDetailForm.fxml"));
                     break;
                 case "courses":
                     root = FXMLLoader.load(this.getClass().getResource("../views/CourseForm.fxml"));

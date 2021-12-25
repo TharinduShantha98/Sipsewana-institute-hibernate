@@ -104,7 +104,7 @@ public class StudentBoImpl  implements StudentBo {
         if(studentDTO!= null){
             return new Student(studentDTO.getStudentId(),
                     studentDTO.getStudentFName(),studentDTO.getStudentLName(),
-                    studentDTO.getAddress(),studentDTO.getIdNumber(),studentDTO.getGender());
+                    studentDTO.getAddress(),studentDTO.getIdNumber(),studentDTO.getGender(),studentDTO.getTotalFee());
         }
 
         return null;

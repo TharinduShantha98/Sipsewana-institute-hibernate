@@ -6,6 +6,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -13,12 +16,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.ijse.secondSem.hibernate.bo.custom.CourseBo;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.CourseBoImpl;
 import lk.ijse.secondSem.hibernate.dto.CourseDTO;
+import org.hibernate.Session;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -34,6 +41,7 @@ public class CourseFormController {
     public TableColumn colProgram;
     public TableColumn colDuration;
     public TableColumn colFee;
+    public AnchorPane course;
 
     public void  initialize(){
 
@@ -166,4 +174,14 @@ public class CourseFormController {
     }
 
 
+    public void backToHomeOnAction(ActionEvent actionEvent) throws IOException {
+
+        Parent root = FXMLLoader.load(this.getClass().getResource("../views/DashBordForm.fxml"));
+        Scene scene = new Scene(root);
+        Stage primaryStage = (Stage) this.course.getScene().getWindow();
+        primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
+
+
+    }
 }

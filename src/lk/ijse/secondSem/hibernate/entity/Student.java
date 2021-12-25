@@ -18,13 +18,14 @@ public class Student {
     private String Address;
     private String idNumber;
     private String gender;
+    private double totalFee;
 
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private  List<StudentCourse> studentCourses = new ArrayList<>();
 
 
     public Student(long studentId, String studentFName, String studentLName, String address,
-                   String idNumber, String gender, ArrayList<StudentCourse> studentCourses) {
+                   String idNumber, String gender, ArrayList<StudentCourse> studentCourses,double totalFee) {
         this.studentId = studentId;
         this.studentFName = studentFName;
         this.studentLName = studentLName;
@@ -32,16 +33,18 @@ public class Student {
         this.idNumber = idNumber;
         this.gender = gender;
         this.studentCourses = studentCourses;
+        this.totalFee =totalFee;
     }
 
     public Student(long studentId, String studentFName, String studentLName,
-                   String address, String idNumber, String gender) {
+                   String address, String idNumber, String gender,double totalFee) {
         this.studentId = studentId;
         this.studentFName = studentFName;
         this.studentLName = studentLName;
         Address = address;
         this.idNumber = idNumber;
         this.gender = gender;
+        this.totalFee = totalFee;
     }
 
     public Student() {
@@ -101,5 +104,13 @@ public class Student {
 
     public void setStudentCourses(List<StudentCourse> studentCourses) {
         this.studentCourses = studentCourses;
+    }
+
+    public double getTotalFee() {
+        return totalFee;
+    }
+
+    public void setTotalFee(double totalFee) {
+        this.totalFee = totalFee;
     }
 }

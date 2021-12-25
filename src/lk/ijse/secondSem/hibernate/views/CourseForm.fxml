@@ -10,19 +10,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.secondSem.hibernate.controller.CourseFormController">
+<AnchorPane fx:id="course" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.secondSem.hibernate.controller.CourseFormController">
    <children>
-      <Label layoutX="340.0" layoutY="14.0" text="Course program">
+      <Label layoutX="212.0" layoutY="14.0" text="Course program">
          <font>
-            <Font name="Bodoni MT Bold" size="40.0" />
+            <Font name="Bodoni MT Bold" size="58.0" />
          </font>
       </Label>
       <JFXTextField fx:id="TxtProgramId" labelFloat="true" layoutX="57.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="program Id" />
       <JFXTextField fx:id="TxtProgram" labelFloat="true" layoutX="355.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="program" />
       <JFXTextField fx:id="TxtDuration" labelFloat="true" layoutX="665.0" layoutY="117.0" prefHeight="31.0" prefWidth="232.0" promptText="duration" />
       <JFXTextField fx:id="txtFee" labelFloat="true" layoutX="57.0" layoutY="184.0" prefHeight="31.0" prefWidth="232.0" promptText="Fee (LKR)" />
-      <JFXButton layoutX="340.0" layoutY="250.0" onAction="#addProgramOnAction" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #2ecc71;" text="Add Program" />
-      <JFXTextField fx:id="txtSearchProId" labelFloat="true" layoutX="57.0" layoutY="243.0" onAction="#searchCourseId_onAction" prefHeight="31.0" prefWidth="208.0" promptText="search Course Id " />
+      <JFXButton layoutX="476.0" layoutY="250.0" onAction="#addProgramOnAction" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #2ecc71;" text="Add Program">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
+      <JFXTextField fx:id="txtSearchProId" labelFloat="true" layoutX="193.0" layoutY="243.0" onAction="#searchCourseId_onAction" prefHeight="31.0" prefWidth="208.0" promptText="search Course Id " />
       <TableView fx:id="tblCourse" layoutX="57.0" layoutY="301.0" prefHeight="200.0" prefWidth="864.0">
         <columns>
           <TableColumn fx:id="colProgramId" prefWidth="178.0" text="program Id " />
@@ -36,12 +39,38 @@
             <Image url="@assets/5.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="498.0" layoutY="249.0" onAction="#DeleteProgramOnAction" style="-fx-background-color: #2ecc71;" text="delete Program" />
+      <JFXButton layoutX="634.0" layoutY="249.0" onAction="#DeleteProgramOnAction" style="-fx-background-color: #2ecc71;" text="delete Program">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
       <ImageView fx:id="updateTextFiled" fitHeight="96.0" fitWidth="76.0" layoutX="897.0" layoutY="18.0" onMouseClicked="#updateTextFiledOnAction" onMouseEntered="#mouseEnteredOnAction" onMouseExited="#mouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/update2.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="650.0" layoutY="249.0" onAction="#updateProgramOnAction" style="-fx-background-color: #2ecc71;" text="update Program" />
+      <JFXButton layoutX="786.0" layoutY="249.0" onAction="#updateProgramOnAction" style="-fx-background-color: #2ecc71;" text="update Program">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></JFXButton>
+      <ImageView fitHeight="159.0" fitWidth="201.0" layoutX="14.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/4.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="140.0" fitWidth="137.0" layoutX="203.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/course2.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="786.0" layoutY="639.0" onAction="#backToHomeOnAction" prefHeight="31.0" prefWidth="128.0" style="-fx-background-color: #9b59b6;" text="back Home">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="408.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/search.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
