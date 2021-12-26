@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.secondSem.hibernate.util.DateTime;
 
 import java.io.IOException;
 
@@ -28,6 +29,12 @@ public class DashBordFormController {
 
 
     public void initialize(){
+            datAndTime();
+
+    }
+
+    public  void datAndTime(){
+        new DateTime().setTimeAndData(lblDate,lblTime);
 
 
     }

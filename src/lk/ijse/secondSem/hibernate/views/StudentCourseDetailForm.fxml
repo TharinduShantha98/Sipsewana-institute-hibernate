@@ -17,7 +17,7 @@
             <Font name="Bodoni MT Bold" size="48.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtStudentId" labelFloat="true" layoutX="33.0" layoutY="83.0" prefHeight="31.0" prefWidth="243.0" promptText="Search Student Id">
+      <JFXTextField fx:id="txtStudentId" labelFloat="true" layoutX="33.0" layoutY="83.0" onAction="#searchStudentOnAction" prefHeight="31.0" prefWidth="243.0" promptText="Search Student Id">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXTextField>
@@ -72,7 +72,7 @@
             <Image url="@assets/back.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="14.0" layoutY="472.0" prefHeight="60.0" prefWidth="113.0" text="Add Student">
+      <JFXButton layoutX="14.0" layoutY="472.0" onAction="#addStudentPageOnAction" prefHeight="60.0" prefWidth="113.0" text="Add Student">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

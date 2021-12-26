@@ -35,8 +35,9 @@ public class StudentBoImpl  implements StudentBo {
         ArrayList<Course> courseArrayList = convertCourseType(studentCourses);
 
 
-
         List<StudentCourse> studentCourses1 = new ArrayList<>();
+
+
         for (Course c1 : courseArrayList
              ) {
             studentCourses1.add(new StudentCourse(student,c1,date,time));
