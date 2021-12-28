@@ -79,10 +79,18 @@ public class CourseFormController {
 
     public void searchCourseId_onAction(ActionEvent actionEvent) {
         CourseDTO courseDTO = courseBo.searchCourse(txtSearchProId.getText());
-        TxtProgram.setText(courseDTO.getProgram());
-        TxtProgramId.setText(courseDTO.getProgramId());
-        TxtDuration.setText(courseDTO.getDuration());
-        txtFee.setText(String.valueOf(courseDTO.getFee()));
+        if(courseDTO != null){
+            TxtProgram.setText(courseDTO.getProgram());
+            TxtProgramId.setText(courseDTO.getProgramId());
+            TxtDuration.setText(courseDTO.getDuration());
+            txtFee.setText(String.valueOf(courseDTO.getFee()));
+
+        }else{
+
+            new Alert(Alert.AlertType.WARNING,"i can not found these a course ").show();
+        }
+
+
 
     }
 

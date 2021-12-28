@@ -22,6 +22,8 @@ public class StudentCourseBoImpl implements StudentCourseBO {
     @Override
     public List<StudentCourseDTO> search(String id) {
         List<StudentCourse> studentCourses = studentDetailDAO.studentSearch(id);
+        System.out.println("bo "+studentCourses.size());
+
 
         if(!studentCourses.isEmpty()){
             StudentCourse studentCourse = studentCourses.get(0);
@@ -63,4 +65,59 @@ public class StudentCourseBoImpl implements StudentCourseBO {
 
 
     }
+
+    @Override
+    public boolean updateStudentCourseDetail(List<StudentCourseDTO> studentCourse) {
+      StudentCourseDTO studentCourseDTO = studentCourse.get(0);
+
+
+        StudentDTO studentDTO = studentCourseDTO.getStudent();
+        Student student1 = new Student();
+        student1.setIdNumber(studentDTO.getIdNumber());
+        student1.setStudentFName(studentDTO.getStudentFName());
+        student1.setStudentLName(studentDTO.getStudentLName());
+        student1.setIdNumber(studentDTO.getIdNumber());
+        student1.setAddress(studentDTO.getAddress());
+        student1.setGender(studentDTO.getGender());
+
+
+        List<Course> courses = new ArrayList<>();
+
+        for (StudentCourseDTO s1: studentCourse
+             ) {
+
+            courses.add(new Course(s1.getCourse().getProgramId(),
+                    s1.getCourse().getProgram(),
+                    s1.getCourse().getDuration(),
+                    s1.getCourse().getFee()));
+
+        }
+
+        List<StudentCourse> studentCourseList = new ArrayList<>();
+        for(int i =0; i < courses.size(); i++){
+           studentCourseList.add(new StudentCourse(
+                   student1,courses.get(i),studentCourse.get(i).getDate(),studentCourse.get(i).getTime()));
+
+        }
+
+        boolean b = studentDetailDAO.updateDetail(studentCourseList);
+
+        return b;
+
+
+    }
+
+
+
+
+
+    public void studentDetailUpdate2(StudentDTO studentDTO){
+
+
+
+
+
+    }
+
+
 }

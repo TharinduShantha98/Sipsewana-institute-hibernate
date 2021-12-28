@@ -17,7 +17,7 @@
          <image>
             <Image url="@assets/design5.png" />
          </image></ImageView>
-      <ImageView fitHeight="437.0" fitWidth="444.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="595.0" fitWidth="760.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/design1.png" />
          </image>

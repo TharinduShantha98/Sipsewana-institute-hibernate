@@ -17,6 +17,8 @@ import lk.ijse.secondSem.hibernate.bo.custom.Impl.StudentCourseBoImpl;
 import lk.ijse.secondSem.hibernate.bo.custom.StudentCourseBO;
 import lk.ijse.secondSem.hibernate.dto.CourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentCourseDTO;
+import lk.ijse.secondSem.hibernate.dto.StudentDTO;
+import lk.ijse.secondSem.hibernate.entity.Student;
 import lk.ijse.secondSem.hibernate.entity.StudentCourse;
 import lk.ijse.secondSem.hibernate.views.tm.StudentCourseTM;
 
@@ -41,7 +43,14 @@ public class StudentCourseDetailFormController {
     public TableColumn colCourseFee;
     public TableColumn colDate;
     public TableColumn colTime;
-
+    public TableView tblStudent;
+    public TableColumn colStudentId;
+    public TableColumn colFname;
+    public TableColumn colLname;
+    public TableColumn colAddress;
+    public TableColumn colGender;
+    public TableColumn colIdNumber;
+    public TableColumn colTotalFee;
 
 
     StudentCourseBO studentCourseBO = new StudentCourseBoImpl();
@@ -71,42 +80,59 @@ public class StudentCourseDetailFormController {
 
     }
 
+    List<StudentCourseDTO> studentCourseDTOList = new ArrayList<>();
     public void searchStudentOnAction(ActionEvent actionEvent) {
-        List<StudentCourseDTO> searchStudent = studentCourseBO.search(txtStudentId.getText());
-        List<CourseDTO> courseDTOList = new ArrayList<>();
+        try {
+            List<StudentCourseDTO> searchStudent = studentCourseBO.search(txtStudentId.getText());
+            studentCourseDTOList.addAll(searchStudent);
 
-        if(!searchStudent.isEmpty()){
-            StudentCourseDTO search = searchStudent.get(0);
-            String date = search.getDate();
-            String time = search.getTime();
+            int size = searchStudent.size();
+            System.out.println(size);
 
-
-
-            txtStudentFirstName.setText(search.getStudent().getStudentFName());
-            txtStudentLastName.setText(search.getStudent().getStudentLName());
-            txtAddress.setText(search.getStudent().getAddress());
-            txtGender.setText(search.getStudent().getGender());
-            txtIdNumber.setText(search.getStudent().getIdNumber());
-            txtTotalFee.setText(String.valueOf(search.getStudent().getTotalFee()));
+            List<CourseDTO> courseDTOList = new ArrayList<>();
 
 
-            for (StudentCourseDTO s1: searchStudent
-                 ) {
-                courseDTOList.add(new CourseDTO(s1.getCourse().getProgramId(),
-                        s1.getCourse().getProgram(),
-                        s1.getCourse().getDuration(),
-                        s1.getCourse().getFee()));
+            if(!searchStudent.isEmpty()){
+                StudentCourseDTO search = searchStudent.get(0);
+                String date = search.getDate();
+                String time = search.getTime();
+
+
+
+                txtStudentFirstName.setText(search.getStudent().getStudentFName());
+                txtStudentLastName.setText(search.getStudent().getStudentLName());
+                txtAddress.setText(search.getStudent().getAddress());
+                txtGender.setText(search.getStudent().getGender());
+                txtIdNumber.setText(search.getStudent().getIdNumber());
+                txtTotalFee.setText(String.valueOf(search.getStudent().getTotalFee()));
+
+
+                for (StudentCourseDTO s1: searchStudent
+                ) {
+                    courseDTOList.add(new CourseDTO(s1.getCourse().getProgramId(),
+                            s1.getCourse().getProgram(),
+                            s1.getCourse().getDuration(),
+                            s1.getCourse().getFee()));
+
+
+                }
+                System.out.println(courseDTOList.size());
+                setTblCourseDetail(courseDTOList,date, time);
+
+
+            }else{
+                Alert alert = new Alert(Alert.AlertType.WARNING,"Not student available ");
+                alert.show();
+
             }
 
-            setTblCourseDetail(courseDTOList,date, time);
 
 
-        }else{
+        }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.WARNING,"Not student available ");
             alert.show();
 
         }
-
 
     }
 
@@ -136,6 +162,29 @@ public class StudentCourseDetailFormController {
 
     }
 
+    public void updateOnAction(ActionEvent actionEvent) {
+        /*for (int i = 0; i < studentCourseDTOList.size(); i++){
+            StudentDTO student = studentCourseDTOList.get(1).getStudent();
+            student.setStudentFName(txtStudentFirstName.getText());
+            student.setAddress(txtAddress.getText());
+
+
+        }
+
+        boolean b = studentCourseBO.updateStudentCourseDetail(studentCourseDTOList);
+
+        if(b){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"success ");
+            alert.show();
+        }
+*/
+
+    }
+
+
+
+
+
     public void addStudentPageOnAction(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("../views/StudentAddForm.fxml"));
         Scene scene = new Scene(root);
@@ -151,4 +200,6 @@ public class StudentCourseDetailFormController {
 
 
     }
+
+
 }

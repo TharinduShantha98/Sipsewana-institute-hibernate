@@ -52,15 +52,57 @@ public class StudentDetailDAOImpl implements StudentDetailDAO {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        NativeQuery<StudentCourse> nativeQuery =
-                session.createNativeQuery("SELECT * FROM student_course WHERE student_id = ?",StudentCourse.class);
-        NativeQuery<StudentCourse> studentCourseNativeQuery = nativeQuery.setParameter(1, s);
-        List<StudentCourse> list = studentCourseNativeQuery.list();
+        try{
+            NativeQuery<StudentCourse> nativeQuery =
+                    session.createNativeQuery("SELECT * FROM student_course WHERE student_id = ?",StudentCourse.class);
+            NativeQuery<StudentCourse> studentCourseNativeQuery = nativeQuery.setParameter(1, s);
+            List<StudentCourse> list = studentCourseNativeQuery.list();
+            System.out.println("dao "+ list.size());
+            if(!list.isEmpty()){
+                System.out.println("dao "+ list.size());
+                return list;
 
-        if(!list.isEmpty()){
-            return list;
+            }
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+
 
         }
+
         return null;
     }
+
+
+
+    @Override
+    public boolean updateDetail(List<StudentCourse> studentCourses){
+
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+
+        for (StudentCourse s1: studentCourses
+             ) {
+            session.update(s1);
+        }
+
+
+
+
+        transaction.commit();
+
+
+        return true;
+
+
+
+
+    }
+
+
+
 }

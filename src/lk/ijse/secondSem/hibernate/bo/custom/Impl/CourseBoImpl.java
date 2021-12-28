@@ -23,8 +23,16 @@ public class CourseBoImpl  implements CourseBo {
     @Override
     public CourseDTO searchCourse(String courseId) {
        Course course = courseDAO.search(courseId);
-       return new CourseDTO(course.getProgramId(),course.getProgram(),course.getDuration(),
-               course.getFee());
+       if(course != null){
+           return new CourseDTO(course.getProgramId(),course.getProgram(),course.getDuration(),
+                   course.getFee());
+
+
+       }
+       return null;
+
+
+
     }
 
     @Override

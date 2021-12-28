@@ -2,6 +2,8 @@ package lk.ijse.secondSem.hibernate.bo.custom.Impl;
 
 import lk.ijse.secondSem.hibernate.bo.custom.StudentBo;
 import lk.ijse.secondSem.hibernate.controller.StudentAddFormController;
+import lk.ijse.secondSem.hibernate.dao.Custom.Impl.StudentDAOImpl;
+import lk.ijse.secondSem.hibernate.dao.Custom.StudentDAO;
 import lk.ijse.secondSem.hibernate.dto.CourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentCourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentDTO;
@@ -20,6 +22,9 @@ import java.util.List;
 
 public class StudentBoImpl  implements StudentBo {
     SessionFactory sessionFactory;
+
+    StudentDAO studentDAO = new StudentDAOImpl();
+
 
     public StudentBoImpl(){
         sessionFactory = FactoryConfiguration.getSessionFactory();
@@ -52,14 +57,6 @@ public class StudentBoImpl  implements StudentBo {
 
         transaction.commit();
         return true;
-
-
-
-
-
-
-
-
 
 
       /*  for(CourseDTO courseDTO1: courseDTO){
@@ -100,6 +97,33 @@ public class StudentBoImpl  implements StudentBo {
 
     }
 
+    @Override
+    public List<StudentDTO> getAllStudent() {
+        List<Student> all = studentDAO.getAll();
+
+        List<StudentDTO> studentDTOList = new ArrayList<>();
+
+        for (Student s1: all
+             ) {
+            studentDTOList.add(new StudentDTO(s1.getStudentId(),
+                    s1.getStudentFName(),
+                    s1.getStudentLName(),
+                    s1.getAddress(),
+                    s1.getIdNumber(),
+                    s1.getGender(),
+                    s1.getTotalFee()));
+        }
+
+
+        return studentDTOList;
+
+    }
+
+    @Override
+    public boolean updateStudent(StudentDTO studentDTO) {
+        return false;
+    }
+
 
     private Student convertStudentType(StudentDTO studentDTO){
         if(studentDTO!= null){
@@ -124,5 +148,12 @@ public class StudentBoImpl  implements StudentBo {
 
         return courseArrayList;
     }
+
+
+
+
+
+
+
 
 }
