@@ -99,29 +99,49 @@ public class StudentBoImpl  implements StudentBo {
 
     @Override
     public List<StudentDTO> getAllStudent() {
-        List<Student> all = studentDAO.getAll();
+        List<Student> all =studentDAO.getAll();
 
         List<StudentDTO> studentDTOList = new ArrayList<>();
 
-        for (Student s1: all
-             ) {
-            studentDTOList.add(new StudentDTO(s1.getStudentId(),
-                    s1.getStudentFName(),
-                    s1.getStudentLName(),
-                    s1.getAddress(),
-                    s1.getIdNumber(),
-                    s1.getGender(),
-                    s1.getTotalFee()));
+
+        if(!all.isEmpty()){
+            for (Student s1: all
+            ) {
+                studentDTOList.add(new StudentDTO(s1.getStudentId(),
+                        s1.getStudentFName(),
+                        s1.getStudentLName(),
+                        s1.getAddress(),
+                        s1.getIdNumber(),
+                        s1.getGender(),
+                        s1.getTotalFee()));
+            }
+
+
+            return studentDTOList;
+
+        }else{
+            return null;
         }
 
 
-        return studentDTOList;
 
     }
 
     @Override
     public boolean updateStudent(StudentDTO studentDTO) {
-        return false;
+        Student s1 = new Student(studentDTO.getStudentId(),
+                studentDTO.getStudentFName(),
+                studentDTO.getStudentLName(),
+                studentDTO.getAddress(),
+                studentDTO.getIdNumber(),
+                studentDTO.getGender(),
+                studentDTO.getTotalFee());
+
+
+        boolean update = studentDAO.update(s1);
+        return update;
+
+
     }
 
 

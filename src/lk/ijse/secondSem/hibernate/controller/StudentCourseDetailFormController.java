@@ -13,7 +13,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.secondSem.hibernate.bo.custom.Impl.StudentBoImpl;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.StudentCourseBoImpl;
+import lk.ijse.secondSem.hibernate.bo.custom.StudentBo;
 import lk.ijse.secondSem.hibernate.bo.custom.StudentCourseBO;
 import lk.ijse.secondSem.hibernate.dto.CourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentCourseDTO;
@@ -54,6 +56,7 @@ public class StudentCourseDetailFormController {
 
 
     StudentCourseBO studentCourseBO = new StudentCourseBoImpl();
+    StudentBo studentBo = new StudentBoImpl();
 
     public void initialize(){
         colCourseId.setCellValueFactory(new PropertyValueFactory<>("courseId"));
@@ -64,11 +67,21 @@ public class StudentCourseDetailFormController {
         colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
 
 
+
+
+
+        colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colFname.setCellValueFactory(new PropertyValueFactory<>("studentFName"));
+        colLname.setCellValueFactory(new PropertyValueFactory<>("studentLName"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
+        colIdNumber.setCellValueFactory(new PropertyValueFactory<>("idNumber"));
+        colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        colTotalFee.setCellValueFactory(new PropertyValueFactory<>("totalFee"));
+
+
+
+        setStudentTbl();
     }
-
-
-
-
 
     public void backToHome(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("../views/dashBordForm.fxml"));
@@ -80,6 +93,7 @@ public class StudentCourseDetailFormController {
 
     }
 
+/*=================== search student ==========================*/
     List<StudentCourseDTO> studentCourseDTOList = new ArrayList<>();
     public void searchStudentOnAction(ActionEvent actionEvent) {
         try {
@@ -137,7 +151,7 @@ public class StudentCourseDetailFormController {
     }
 
 
-
+/*====================== table studentDetail===========================*/
     public void setTblCourseDetail(List<CourseDTO> courseDetail,String date, String time){
         ObservableList<StudentCourseTM> studentCourseTMObservableList
                 = FXCollections.observableArrayList();
@@ -157,12 +171,50 @@ public class StudentCourseDetailFormController {
 
         tblCourseDetail.setItems(studentCourseTMObservableList);
 
+    }
 
+  /*  ===============================table student===============================*/
+    public void setStudentTbl(){
+        List<StudentDTO> allStudent = studentBo.getAllStudent();
+
+        if(!allStudent.isEmpty()) {
+            ObservableList<StudentDTO> studentDTOObservableList = FXCollections.observableArrayList();
+            studentDTOObservableList.addAll(allStudent);
+            tblStudent.setItems(studentDTOObservableList);
+        }else{
+
+
+        }
 
 
     }
 
-    public void updateOnAction(ActionEvent actionEvent) {
+
+
+
+
+    public void updateStudentOnAction(ActionEvent actionEvent) {
+        StudentDTO studentDTO = new StudentDTO(Long.parseLong(txtStudentId.getText()),
+                txtStudentFirstName.getText(),
+                txtStudentLastName.getText(),
+                txtAddress.getText(),
+                txtIdNumber.getText(),
+                txtGender.getText(),
+                Double.parseDouble(txtTotalFee.getText()));
+
+        boolean b = studentBo.updateStudent(studentDTO);
+
+        Alert alert;
+        if(b){
+            alert = new Alert(Alert.AlertType.CONFIRMATION,"success update");
+        }else{
+            alert = new Alert(Alert.AlertType.WARNING,"not success update");
+
+        }
+        alert.show();
+        setStudentTbl();
+
+
         /*for (int i = 0; i < studentCourseDTOList.size(); i++){
             StudentDTO student = studentCourseDTOList.get(1).getStudent();
             student.setStudentFName(txtStudentFirstName.getText());
@@ -179,6 +231,8 @@ public class StudentCourseDetailFormController {
         }
 */
 
+
+
     }
 
 
@@ -192,10 +246,6 @@ public class StudentCourseDetailFormController {
         primaryStage.setScene(scene);
         primaryStage.centerOnScreen();
         primaryStage.show();
-
-
-
-
 
 
 

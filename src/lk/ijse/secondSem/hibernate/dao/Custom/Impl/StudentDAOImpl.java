@@ -24,7 +24,24 @@ public class StudentDAOImpl  implements StudentDAO {
 
     @Override
     public boolean update(Student student) {
-        return false;
+        try{
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+
+            session.update(student);
+
+            transaction.commit();
+            return true;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+
+        }
+
+
+
+
     }
 
     @Override

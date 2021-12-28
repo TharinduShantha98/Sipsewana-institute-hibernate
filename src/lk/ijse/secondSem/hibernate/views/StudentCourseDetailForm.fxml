@@ -13,11 +13,16 @@
 
 <AnchorPane fx:id="StudentD" prefHeight="700.0" prefWidth="1000.0" styleClass="root3" stylesheets="@styles/backGround.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.secondSem.hibernate.controller.StudentCourseDetailFormController">
    <children>
-      <Label layoutX="14.0" layoutY="-1.0" text="Student Course Detail." textFill="#10b210">
+      <Label layoutX="14.0" layoutY="-1.0" text="Student Course Detail." textFill="#020702">
          <font>
             <Font name="Bodoni MT Bold" size="48.0" />
          </font>
       </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="843.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/english.png" />
+         </image>
+      </ImageView>
       <JFXTextField fx:id="txtStudentId" labelFloat="true" layoutX="33.0" layoutY="83.0" onAction="#searchStudentOnAction" prefHeight="31.0" prefWidth="243.0" promptText="Search Student Id">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -81,7 +86,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="755.0" layoutY="190.0" onAction="#updateOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #3498db;" text="Student update">
+      <JFXButton layoutX="755.0" layoutY="190.0" onAction="#updateStudentOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #3498db;" text="Student update">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>

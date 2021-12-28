@@ -4,7 +4,9 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="Hibernate2ndSemCw" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -17,6 +19,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="fontawesomefx-8.8" level="project" />
+    <orderEntry type="library" name="antlr-2.7.71" level="project" />
+    <orderEntry type="library" name="ehcache-3.8.1" level="project" />
     <orderEntry type="library" name="antlr-2.7.7" level="project" />
   </component>
 </module>
