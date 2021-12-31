@@ -1,6 +1,7 @@
 package lk.ijse.secondSem.hibernate.dao.Custom.Impl;
 
 import lk.ijse.secondSem.hibernate.dao.Custom.StudentDetailDAO;
+import lk.ijse.secondSem.hibernate.entity.Student;
 import lk.ijse.secondSem.hibernate.entity.StudentCourse;
 import lk.ijse.secondSem.hibernate.util.FactoryConfiguration;
 import org.hibernate.Session;
@@ -33,6 +34,7 @@ public class StudentDetailDAOImpl implements StudentDetailDAO {
 
     @Override
     public boolean delete(StudentCourse studentCourse) {
+
         return false;
     }
 
@@ -90,19 +92,54 @@ public class StudentDetailDAOImpl implements StudentDetailDAO {
             session.update(s1);
         }
 
-
-
-
+        
         transaction.commit();
 
 
         return true;
 
+    }
 
+    @Override
+    public boolean studentDelete(long id) {
+        try {
+
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            session.createNativeQuery("SET FOREIGN_KEY_CHECKS=0");
+
+           /* NativeQuery nativeQuery = session.createNativeQuery("DELETE T FROM student T INNER JOIN student_course" +
+                    " ON student_course.student_id = T.studentId WHERE student_course.student_id =?", Student.class);
+
+*/
+            Student s1 = new Student();
+            s1.setStudentId(id);
+
+            NativeQuery nativeQuery = session.createNativeQuery("DELETE FROM student_course WHERE student_id = ?");
+            int i = nativeQuery.setParameter(1, id).executeUpdate();
+
+
+
+            if(i!=0){
+                session.delete(s1);
+                session.createNativeQuery("SET FOREIGN_KEY_CHECKS=1");
+                transaction.commit();
+
+
+                return true;
+            }else{
+                transaction.rollback();
+                return false;
+            }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
 
 
     }
-
 
 
 }

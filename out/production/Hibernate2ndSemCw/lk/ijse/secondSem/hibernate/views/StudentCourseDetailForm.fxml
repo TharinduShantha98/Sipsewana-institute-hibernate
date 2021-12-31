@@ -107,5 +107,10 @@
             <TableColumn fx:id="colTotalFee" prefWidth="142.0" text="Total Fee" />
         </columns>
       </TableView>
+      <JFXButton layoutX="569.0" layoutY="190.0" onAction="#deleteStudentOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #3498db;" text="Student Delete">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

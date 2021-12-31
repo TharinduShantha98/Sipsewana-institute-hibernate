@@ -11,5 +11,6 @@ public interface StudentDetailDAO extends CrudDao<StudentCourse,String> {
 
     List<StudentCourse> studentSearch(String s);
     public boolean updateDetail(List<StudentCourse> studentCourses);
+    boolean studentDelete(long id);
 
 }

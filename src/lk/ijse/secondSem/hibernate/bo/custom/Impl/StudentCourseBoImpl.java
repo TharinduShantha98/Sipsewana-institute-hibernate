@@ -107,15 +107,11 @@ public class StudentCourseBoImpl implements StudentCourseBO {
 
     }
 
+    @Override
+    public boolean deleteStudent(long id) {
 
-
-
-
-    public void studentDetailUpdate2(StudentDTO studentDTO){
-
-
-
-
+        boolean b = studentDetailDAO.studentDelete(id);
+        return b;
 
     }
 

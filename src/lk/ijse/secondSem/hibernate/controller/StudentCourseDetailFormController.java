@@ -22,7 +22,11 @@ import lk.ijse.secondSem.hibernate.dto.StudentCourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentDTO;
 import lk.ijse.secondSem.hibernate.entity.Student;
 import lk.ijse.secondSem.hibernate.entity.StudentCourse;
+import lk.ijse.secondSem.hibernate.util.FactoryConfiguration;
 import lk.ijse.secondSem.hibernate.views.tm.StudentCourseTM;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -81,6 +85,10 @@ public class StudentCourseDetailFormController {
 
 
         setStudentTbl();
+
+
+      /*  cache();
+        cache2();*/
     }
 
     public void backToHome(ActionEvent actionEvent) throws IOException {
@@ -192,7 +200,7 @@ public class StudentCourseDetailFormController {
 
 
 
-
+/*==========update student =================*/
     public void updateStudentOnAction(ActionEvent actionEvent) {
         StudentDTO studentDTO = new StudentDTO(Long.parseLong(txtStudentId.getText()),
                 txtStudentFirstName.getText(),
@@ -215,25 +223,27 @@ public class StudentCourseDetailFormController {
         setStudentTbl();
 
 
-        /*for (int i = 0; i < studentCourseDTOList.size(); i++){
-            StudentDTO student = studentCourseDTOList.get(1).getStudent();
-            student.setStudentFName(txtStudentFirstName.getText());
-            student.setAddress(txtAddress.getText());
+    }
 
 
-        }
 
-        boolean b = studentCourseBO.updateStudentCourseDetail(studentCourseDTOList);
+  /*  ====================delete student======================*/
+    public void deleteStudentOnAction(ActionEvent actionEvent) {
+        boolean b = studentCourseBO.deleteStudent(Long.parseLong(txtStudentId.getText()));
 
+
+        Alert alert;
         if(b){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"success ");
-            alert.show();
+           alert= new Alert(Alert.AlertType.CONFIRMATION," delete success ");
+
+        }else {
+            alert = new Alert(Alert.AlertType.WARNING, "delete not success");
         }
-*/
 
-
+        alert.show();
 
     }
+
 
 
 
@@ -250,6 +260,45 @@ public class StudentCourseDetailFormController {
 
 
     }
+
+
+
+
+    /*====================second level cache check=================*/
+
+   /* public void cache(){
+        SessionFactory sessionFactory= FactoryConfiguration.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Student student = session.get(Student.class, new Long(12));
+        System.out.println(student);
+
+
+        Student student1 = session.get(Student.class, new Long(12));
+        System.out.println(student1);
+
+        transaction.commit();
+    }
+
+
+    public void cache2(){
+        SessionFactory sessionFactory= FactoryConfiguration.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Student student = session.get(Student.class, new Long(12));
+        System.out.println(student);
+
+
+
+
+        transaction.commit();
+    }
+*/
+
+
+
 
 
 }

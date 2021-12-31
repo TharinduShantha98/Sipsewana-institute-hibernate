@@ -1,5 +1,8 @@
 package lk.ijse.secondSem.hibernate.entity;
 
+
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -112,5 +115,20 @@ public class Student {
 
     public void setTotalFee(double totalFee) {
         this.totalFee = totalFee;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", studentFName='" + studentFName + '\'' +
+                ", studentLName='" + studentLName + '\'' +
+                ", Address='" + Address + '\'' +
+                ", idNumber='" + idNumber + '\'' +
+                ", gender='" + gender + '\'' +
+                ", totalFee=" + totalFee +
+                ", studentCourses=" + studentCourses +
+                '}';
     }
 }
