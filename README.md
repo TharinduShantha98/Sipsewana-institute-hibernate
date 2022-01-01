@@ -73,7 +73,7 @@ I used Layered Architecture for this project.
 
 
 <p>
-<img src="src/lk/ijse/secondSem/hibernate/views/assets/readmeImage/readme4.png"  width="80" height="300">
+<img src="src/lk/ijse/secondSem/hibernate/views/assets/readmeImage/readme5.png"  width="80" height="300">
  
 </p>
 
