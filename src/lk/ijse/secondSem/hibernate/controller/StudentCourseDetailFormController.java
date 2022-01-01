@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.secondSem.hibernate.bo.BOFactory;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.StudentBoImpl;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.StudentCourseBoImpl;
 import lk.ijse.secondSem.hibernate.bo.custom.StudentBo;
@@ -59,8 +60,12 @@ public class StudentCourseDetailFormController {
     public TableColumn colTotalFee;
 
 
-    StudentCourseBO studentCourseBO = new StudentCourseBoImpl();
-    StudentBo studentBo = new StudentBoImpl();
+    private final StudentCourseBO studentCourseBO = (StudentCourseBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT_COURSE);
+    private final StudentBo studentBo = (StudentBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT);
+
+
+   /* StudentCourseBO studentCourseBO = new StudentCourseBoImpl();
+    StudentBo studentBo = new StudentBoImpl();*/
 
     public void initialize(){
         colCourseId.setCellValueFactory(new PropertyValueFactory<>("courseId"));

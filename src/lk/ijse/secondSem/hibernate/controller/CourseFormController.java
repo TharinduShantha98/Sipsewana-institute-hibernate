@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.secondSem.hibernate.bo.BOFactory;
 import lk.ijse.secondSem.hibernate.bo.custom.CourseBo;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.CourseBoImpl;
 import lk.ijse.secondSem.hibernate.dto.CourseDTO;
@@ -43,6 +44,13 @@ public class CourseFormController {
     public TableColumn colFee;
     public AnchorPane course;
 
+
+    private final CourseBo courseBo = (CourseBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.COURSE);
+
+    /*private CourseBo courseBo = new CourseBoImpl();*/
+
+
+
     public void  initialize(){
 
         colProgramId.setCellValueFactory(new PropertyValueFactory<>("programId"));
@@ -56,7 +64,7 @@ public class CourseFormController {
 
     }
 
-    private CourseBo courseBo = new CourseBoImpl();
+
 
 
     public void addProgramOnAction(ActionEvent actionEvent) {

@@ -23,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.secondSem.hibernate.bo.BOFactory;
 import lk.ijse.secondSem.hibernate.bo.custom.CourseBo;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.CourseBoImpl;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.StudentBoImpl;
@@ -69,9 +70,16 @@ public class StudentAddFormController {
 
     private  CourseDTO courseDTO;
 
-    CourseBo courseBo = new CourseBoImpl();
+
+    private final CourseBo courseBo = (CourseBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.COURSE);
+    private final StudentBo studentBo = (StudentBo) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT);
+    private final StudentCourseBO studentCourseBO = (StudentCourseBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT_COURSE);
+
+
+
+   /* CourseBo courseBo = new CourseBoImpl();
     StudentBo studentBo = new StudentBoImpl();
-    StudentCourseBO studentCourseBO = new StudentCourseBoImpl();
+    StudentCourseBO studentCourseBO = new StudentCourseBoImpl();*/
 
     DateTime dateTime = new DateTime();
 
