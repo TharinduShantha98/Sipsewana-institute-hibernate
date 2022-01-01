@@ -3,6 +3,7 @@ package lk.ijse.secondSem.hibernate.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -15,9 +16,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lk.ijse.secondSem.hibernate.bo.custom.CourseBo;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.CourseBoImpl;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.StudentBoImpl;
@@ -216,18 +221,19 @@ public class StudentAddFormController {
 
     List<StudentCourseDTO> search;
     public void searchStudentOnAction(ActionEvent actionEvent) {
+        try {
 
-        search = studentCourseBO.search(txtStudentSearch.getText());
-        StudentCourseDTO studentCourseDTO = search.get(0);
-        StudentDTO student = studentCourseDTO.getStudent();
-        txtFirstName.setText(student.getStudentFName());
-        txtLastName.setText(student.getStudentLName());
-        txtAddress.setText(student.getAddress());
-        txtIdNumber.setText(student.getIdNumber());
-        cmbGender.getSelectionModel().select(student.getGender());
-        lblTotalFee.setText(String.valueOf(student.getTotalFee()));
+            search = studentCourseBO.search(txtStudentSearch.getText());
+            StudentCourseDTO studentCourseDTO = search.get(0);
+            StudentDTO student = studentCourseDTO.getStudent();
+            txtFirstName.setText(student.getStudentFName());
+            txtLastName.setText(student.getStudentLName());
+            txtAddress.setText(student.getAddress());
+            txtIdNumber.setText(student.getIdNumber());
+            cmbGender.getSelectionModel().select(student.getGender());
+            lblTotalFee.setText(String.valueOf(student.getTotalFee()));
 
-        List<CartTM> cartTMS = new ArrayList<>();
+            List<CartTM> cartTMS = new ArrayList<>();
 
             for(int i =0; i < search.size(); i++){
                 cartTMS.add(new CartTM(search.get(i).getCourse().getProgramId(),
@@ -239,6 +245,16 @@ public class StudentAddFormController {
 
             cartTMObservableList.addAll(cartTMS);
             tblCart.setItems(cartTMObservableList);
+
+
+
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Not student available ");
+            alert.show();
+
+
+        }
+
 
 
     }
@@ -294,5 +310,39 @@ public class StudentAddFormController {
     }
 
 
+    public void goToNextPage(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(this.getClass().getResource("../views/StudentCourseDetailForm.fxml"));
+        Scene scene = new Scene(root);
+        Stage primaryStage = (Stage) this.studentA.getScene().getWindow();
+        primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
 
+    }
+
+    public void mouseEnteredOnAction(MouseEvent mouseEvent) {
+        ImageView icon = (ImageView) mouseEvent.getSource();
+        if(mouseEvent.getSource() instanceof ImageView){
+            ScaleTransition scaleT = new ScaleTransition(Duration.millis(200), icon);
+            scaleT.setToX(1.2);
+            scaleT.setToY(1.2);
+            scaleT.play();
+
+            DropShadow glow = new DropShadow();
+            glow.setColor(Color.CORNFLOWERBLUE);
+            glow.setWidth(20);
+            glow.setHeight(20);
+            glow.setRadius(20);
+            icon.setEffect(glow);
+        }
+
+    }
+
+    public void mouseExitedOnAction(MouseEvent mouseEvent) {
+        ImageView icon = (ImageView) mouseEvent.getSource();
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200),icon);
+        scaleTransition.setToY(1);
+        scaleTransition.setToX(1);
+        scaleTransition.play();
+        icon.setEffect(null);
+    }
 }

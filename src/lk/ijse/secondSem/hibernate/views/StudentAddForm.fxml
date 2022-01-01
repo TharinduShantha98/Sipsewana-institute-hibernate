@@ -56,7 +56,7 @@
             <Font name="System Bold" size="15.0" />
          </font></JFXTextField>
       <JFXComboBox fx:id="cmbGender" labelFloat="true" layoutX="754.0" layoutY="80.0" prefHeight="31.0" prefWidth="178.0" promptText="Gender" unFocusColor="#171717" />
-      <JFXButton layoutX="822.0" layoutY="133.0" onAction="#AddCartOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71;" text="Add Table">
+      <JFXButton layoutX="822.0" layoutY="133.0" onAction="#AddCartOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71; -fx-border-color: black; -fx-border-width: 2px;" text="Add Table">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>
@@ -72,12 +72,12 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>
-      <Label layoutX="14.0" layoutY="629.0" text="Total Fee /=">
+      <Label layoutX="14.0" layoutY="629.0" text="Total Fee :-">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="lblTotalFee" layoutX="208.0" layoutY="631.0" prefHeight="47.0" prefWidth="276.0" text="0000000000">
+      <Label fx:id="lblTotalFee" layoutX="208.0" layoutY="631.0" prefHeight="47.0" prefWidth="276.0">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
@@ -113,7 +113,7 @@
          </font>
       </JFXButton>
       <Separator layoutX="6.0" layoutY="466.0" prefHeight="0.0" prefWidth="986.0" style="-fx-background-color: black;" />
-      <ImageView fx:id="nextPage" fitHeight="122.0" fitWidth="120.0" layoutX="843.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="nextPage" fitHeight="122.0" fitWidth="120.0" layoutX="843.0" layoutY="494.0" onMouseClicked="#goToNextPage" onMouseEntered="#mouseEnteredOnAction" onMouseExited="#mouseExitedOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/next2.png" />
          </image>
