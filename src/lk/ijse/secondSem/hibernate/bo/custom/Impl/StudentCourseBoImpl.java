@@ -3,6 +3,7 @@ package lk.ijse.secondSem.hibernate.bo.custom.Impl;
 import lk.ijse.secondSem.hibernate.bo.custom.StudentCourseBO;
 import lk.ijse.secondSem.hibernate.dao.Custom.Impl.StudentDetailDAOImpl;
 import lk.ijse.secondSem.hibernate.dao.Custom.StudentDetailDAO;
+import lk.ijse.secondSem.hibernate.dao.DAOFactory;
 import lk.ijse.secondSem.hibernate.dto.CourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentCourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentDTO;
@@ -15,7 +16,9 @@ import java.util.List;
 
 public class StudentCourseBoImpl implements StudentCourseBO {
 
-    StudentDetailDAO studentDetailDAO = new StudentDetailDAOImpl();
+    private final StudentDetailDAO studentDetailDAO = (StudentDetailDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT_DETAIL);
+
+   /* StudentDetailDAO studentDetailDAO = new StudentDetailDAOImpl();*/
 
 
 

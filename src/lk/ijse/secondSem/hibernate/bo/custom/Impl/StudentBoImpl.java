@@ -6,6 +6,7 @@ import lk.ijse.secondSem.hibernate.dao.Custom.Impl.StudentDAOImpl;
 import lk.ijse.secondSem.hibernate.dao.Custom.Impl.StudentDetailDAOImpl;
 import lk.ijse.secondSem.hibernate.dao.Custom.StudentDAO;
 import lk.ijse.secondSem.hibernate.dao.Custom.StudentDetailDAO;
+import lk.ijse.secondSem.hibernate.dao.DAOFactory;
 import lk.ijse.secondSem.hibernate.dto.CourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentCourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentDTO;
@@ -25,8 +26,15 @@ import java.util.List;
 public class StudentBoImpl  implements StudentBo {
     SessionFactory sessionFactory;
 
-    StudentDAO studentDAO = new StudentDAOImpl();
-    StudentDetailDAO studentDetailDAO = new StudentDetailDAOImpl();
+
+    private final StudentDAO studentDAO =
+            (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+    private final StudentDetailDAO studentDetailDAO =
+            (StudentDetailDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT_DETAIL);
+
+
+ /*   StudentDAO studentDAO = new StudentDAOImpl();
+    StudentDetailDAO studentDetailDAO = new StudentDetailDAOImpl();*/
 
 
     public StudentBoImpl(){
