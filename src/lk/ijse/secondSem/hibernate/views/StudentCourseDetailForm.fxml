@@ -72,16 +72,16 @@
             <TableColumn fx:id="colTime" prefWidth="104.0" text="Time" />
         </columns>
       </TableView>
-      <JFXButton layoutX="828.0" layoutY="625.0" onAction="#backToHome" prefHeight="31.0" prefWidth="144.0" style="-fx-background-color: #3498db;" text="back to Home">
+      <JFXButton layoutX="786.0" layoutY="633.0" onAction="#backToHome" prefHeight="31.0" prefWidth="144.0" style="-fx-background-color: #3498db;" text="back to Home">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>
-      <ImageView fitHeight="150.0" fitWidth="106.0" layoutX="27.0" layoutY="572.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="106.0" fitWidth="133.0" layoutX="17.0" layoutY="595.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/back.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="24.0" layoutY="595.0" onAction="#addStudentPageOnAction" prefHeight="60.0" prefWidth="113.0" text="Add Student">
+      <JFXButton layoutX="14.0" layoutY="618.0" onAction="#addStudentPageOnAction" prefHeight="60.0" prefWidth="113.0" text="Add Student">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

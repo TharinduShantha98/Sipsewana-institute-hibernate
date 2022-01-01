@@ -1,6 +1,8 @@
 package lk.ijse.secondSem.hibernate.dao.Custom.Impl;
 
 import lk.ijse.secondSem.hibernate.dao.Custom.StudentDetailDAO;
+import lk.ijse.secondSem.hibernate.dto.StudentCourseDTO;
+import lk.ijse.secondSem.hibernate.entity.Course;
 import lk.ijse.secondSem.hibernate.entity.Student;
 import lk.ijse.secondSem.hibernate.entity.StudentCourse;
 import lk.ijse.secondSem.hibernate.util.FactoryConfiguration;
@@ -29,6 +31,7 @@ public class StudentDetailDAOImpl implements StudentDetailDAO {
 
     @Override
     public boolean update(StudentCourse studentCourse) {
+
         return false;
     }
 
@@ -140,6 +143,33 @@ public class StudentDetailDAOImpl implements StudentDetailDAO {
 
 
     }
+
+
+
+    @Override
+    public boolean addNewStudentCourse(Student student, List<StudentCourse> studentCourseList){
+
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+
+
+
+       /* session.update(student);*/
+        for (StudentCourse s1: studentCourseList
+             ) {
+            session.save(s1);
+        }
+
+
+
+        transaction.commit();
+
+
+        return true;
+    }
+
+
 
 
 }

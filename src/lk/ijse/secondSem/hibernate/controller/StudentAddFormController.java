@@ -1,5 +1,6 @@
 package lk.ijse.secondSem.hibernate.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
@@ -14,12 +15,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.secondSem.hibernate.bo.custom.CourseBo;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.CourseBoImpl;
 import lk.ijse.secondSem.hibernate.bo.custom.Impl.StudentBoImpl;
+import lk.ijse.secondSem.hibernate.bo.custom.Impl.StudentCourseBoImpl;
 import lk.ijse.secondSem.hibernate.bo.custom.StudentBo;
+import lk.ijse.secondSem.hibernate.bo.custom.StudentCourseBO;
 import lk.ijse.secondSem.hibernate.dao.Custom.CourseDAO;
 import lk.ijse.secondSem.hibernate.dto.CourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentCourseDTO;
@@ -50,6 +54,10 @@ public class StudentAddFormController {
     public Label lblDate;
     public Label lblTime;
     public AnchorPane studentA;
+    public JFXTextField txtStudentSearch;
+    public JFXButton btnUpdateStudent;
+    public ImageView nextPage;
+    public JFXButton btnSave;
 
 
 
@@ -58,6 +66,8 @@ public class StudentAddFormController {
 
     CourseBo courseBo = new CourseBoImpl();
     StudentBo studentBo = new StudentBoImpl();
+    StudentCourseBO studentCourseBO = new StudentCourseBoImpl();
+
     DateTime dateTime = new DateTime();
 
     public void initialize(){
@@ -104,10 +114,30 @@ public class StudentAddFormController {
     }
 
     ObservableList<CartTM> cartTMObservableList = FXCollections.observableArrayList();
+    ObservableList<CartTM> addNewCourse = FXCollections.observableArrayList();
     public void AddCartOnAction(ActionEvent actionEvent) {
         CartTM cartTM = new CartTM(courseDTO.getProgramId(),
                 courseDTO.getProgram(),courseDTO.getDuration(),courseDTO.getFee());
-         cartTMObservableList.add(cartTM);
+
+        int rowNumber = -1;
+
+        for(int i=0; i < cartTMObservableList.size(); i++){
+            if(cartTMObservableList.get(i).getCourseId().equals(cartTM.getCourseId())){
+                rowNumber=i;
+
+            }
+
+        }
+
+        if(rowNumber == -1){
+            cartTMObservableList.add(cartTM);
+            addNewCourse.add(cartTM);
+        }else{
+            Alert alert = new Alert(Alert.AlertType.WARNING,"This student is currently " +
+                    "registered for this course ");
+            alert.show();
+        }
+
          tblCart.setItems(cartTMObservableList);
          tblCart.refresh();
 
@@ -183,6 +213,78 @@ public class StudentAddFormController {
 
     }
 
+
+    List<StudentCourseDTO> search;
+    public void searchStudentOnAction(ActionEvent actionEvent) {
+
+        search = studentCourseBO.search(txtStudentSearch.getText());
+        StudentCourseDTO studentCourseDTO = search.get(0);
+        StudentDTO student = studentCourseDTO.getStudent();
+        txtFirstName.setText(student.getStudentFName());
+        txtLastName.setText(student.getStudentLName());
+        txtAddress.setText(student.getAddress());
+        txtIdNumber.setText(student.getIdNumber());
+        cmbGender.getSelectionModel().select(student.getGender());
+        lblTotalFee.setText(String.valueOf(student.getTotalFee()));
+
+        List<CartTM> cartTMS = new ArrayList<>();
+
+            for(int i =0; i < search.size(); i++){
+                cartTMS.add(new CartTM(search.get(i).getCourse().getProgramId(),
+                        search.get(i).getCourse().getProgram(),
+                        search.get(i).getCourse().getDuration(),
+                        search.get(i).getCourse().getFee()));
+
+            }
+
+            cartTMObservableList.addAll(cartTMS);
+            tblCart.setItems(cartTMObservableList);
+
+
+    }
+
+    public void updateStudentOnAction(ActionEvent actionEvent) {
+
+        List<CourseDTO> courseDTOList = new ArrayList<>();
+        for (CartTM tm : addNewCourse
+             ) {
+            courseDTOList.add(new CourseDTO(tm.getCourseId(),
+                    tm.getCourseName(),
+                    tm.getCourseDuration(),
+                    tm.getFee()));
+        }
+
+        StudentDTO student = search.get(0).getStudent();
+        student.setTotalFee(Double.parseDouble(lblTotalFee.getText()));
+        List<StudentCourseDTO> studentCourseDTO1 = new ArrayList<>();
+
+
+        for (CourseDTO c1: courseDTOList
+        ) {
+            studentCourseDTO1.add(new StudentCourseDTO(student,c1,lblDate.getText(),lblTime.getText()));
+        }
+
+        boolean b = studentBo.studentAddNewCourse(student, studentCourseDTO1);
+
+        Alert alert;
+        if(b){
+            alert = new Alert(Alert.AlertType.CONFIRMATION,"add new Course success");
+
+        }else{
+            alert = new Alert(Alert.AlertType.WARNING,"add new Course not success");
+
+
+        }
+        alert.show();
+
+
+
+
+    }
+
+
+
+
     public void backHomeOnAction(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(this.getClass().getResource("../views/DashBordForm.fxml"));
         Scene scene = new Scene(root);
@@ -190,5 +292,7 @@ public class StudentAddFormController {
         primaryStage.setScene(scene);
         primaryStage.centerOnScreen();
     }
+
+
 
 }

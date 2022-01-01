@@ -67,6 +67,9 @@ public class StudentCourseBoImpl implements StudentCourseBO {
     }
 
     @Override
+
+    /*====================== update only student detail=============================*/
+
     public boolean updateStudentCourseDetail(List<StudentCourseDTO> studentCourse) {
       StudentCourseDTO studentCourseDTO = studentCourse.get(0);
 
@@ -107,9 +110,11 @@ public class StudentCourseBoImpl implements StudentCourseBO {
 
     }
 
+
+   /* ================== delete student and delete his all courses==================*/
+
     @Override
     public boolean deleteStudent(long id) {
-
         boolean b = studentDetailDAO.studentDelete(id);
         return b;
 

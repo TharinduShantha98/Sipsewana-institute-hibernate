@@ -22,7 +22,7 @@
             <Image url="@assets/design1.png" />
          </image>
       </ImageView>
-      <Label layoutX="255.0" layoutY="2.0" text="Student registration form" textFill="#652adb">
+      <Label layoutX="255.0" layoutY="2.0" text="Student registration form" textFill="#3f0da1">
          <font>
             <Font name="Bodoni MT Bold" size="48.0" />
          </font>
@@ -41,25 +41,25 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txtLastName" labelFloat="true" layoutX="407.0" layoutY="72.0" prefHeight="31.0" prefWidth="346.0" promptText="Student Last Name ">
+      <JFXTextField fx:id="txtLastName" labelFloat="true" layoutX="407.0" layoutY="72.0" prefHeight="31.0" prefWidth="302.0" promptText="Student Last Name ">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="21.0" layoutY="133.0" prefHeight="31.0" prefWidth="356.0" promptText="Address">
+      <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="21.0" layoutY="133.0" prefHeight="31.0" prefWidth="288.0" promptText="Address">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXTextField>
-      <JFXComboBox fx:id="cmbCourseId" labelFloat="true" layoutX="237.0" layoutY="205.0" onAction="#getCourseDetail" prefHeight="31.0" prefWidth="178.0" promptText="course Id" />
-      <JFXTextField fx:id="txtIdNumber" labelFloat="true" layoutX="409.0" layoutY="133.0" prefHeight="31.0" prefWidth="206.0" promptText="Id Number">
+      <JFXComboBox fx:id="cmbCourseId" labelFloat="true" layoutX="576.0" layoutY="133.0" onAction="#getCourseDetail" prefHeight="31.0" prefWidth="178.0" promptText="course Id" unFocusColor="#030303" />
+      <JFXTextField fx:id="txtIdNumber" labelFloat="true" layoutX="331.0" layoutY="133.0" prefHeight="31.0" prefWidth="206.0" promptText="Id Number">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXTextField>
-      <JFXComboBox fx:id="cmbGender" labelFloat="true" layoutX="21.0" layoutY="205.0" prefHeight="31.0" prefWidth="178.0" promptText="Gender" />
-      <JFXButton layoutX="625.0" layoutY="204.0" onAction="#AddCartOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71;" text="Add Table">
+      <JFXComboBox fx:id="cmbGender" labelFloat="true" layoutX="754.0" layoutY="72.0" prefHeight="31.0" prefWidth="178.0" promptText="Gender" unFocusColor="#171717" />
+      <JFXButton layoutX="807.0" layoutY="133.0" onAction="#AddCartOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71;" text="Add Table">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>
-      <TableView fx:id="tblCart" layoutX="15.0" layoutY="313.0" prefHeight="207.0" prefWidth="801.0">
+      <TableView fx:id="tblCart" layoutX="7.0" layoutY="198.0" prefHeight="207.0" prefWidth="801.0">
         <columns>
             <TableColumn fx:id="colCourseId" prefWidth="120.0" text="course Id " />
             <TableColumn fx:id="colCourseName" prefWidth="238.0" text="course name " />
@@ -67,16 +67,16 @@
             <TableColumn fx:id="colFee" prefWidth="215.0" text="Fee(LKR)" />
         </columns>
       </TableView>
-      <JFXButton layoutX="817.0" layoutY="350.0" onAction="#saveOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #2ecc71;" text="Save">
+      <JFXButton layoutX="824.0" layoutY="218.0" onAction="#saveOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #3498db;" text="Save">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>
-      <Label layoutX="25.0" layoutY="569.0" text="Total Fee /=">
+      <Label layoutX="14.0" layoutY="629.0" text="Total Fee /=">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="lblTotalFee" layoutX="208.0" layoutY="569.0" prefHeight="47.0" prefWidth="276.0" text="0000000000">
+      <Label fx:id="lblTotalFee" layoutX="208.0" layoutY="631.0" prefHeight="47.0" prefWidth="276.0" text="0000000000">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
@@ -92,6 +92,21 @@
          </font>
       </Label>
       <JFXButton layoutX="817.0" layoutY="629.0" onAction="#backHomeOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #34495e;" text="back Home" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="21.0" layoutY="429.0" text="If a registered student, please select for add new course " textFill="#17010a">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtStudentSearch" labelFloat="true" layoutX="23.0" layoutY="480.0" onAction="#searchStudentOnAction" prefHeight="31.0" prefWidth="265.0" promptText="student Id" unFocusColor="#141313">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton layoutX="356.0" layoutY="481.0" onAction="#updateStudentOnAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #3498db;" text="Update student">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

@@ -3,7 +3,9 @@ package lk.ijse.secondSem.hibernate.bo.custom.Impl;
 import lk.ijse.secondSem.hibernate.bo.custom.StudentBo;
 import lk.ijse.secondSem.hibernate.controller.StudentAddFormController;
 import lk.ijse.secondSem.hibernate.dao.Custom.Impl.StudentDAOImpl;
+import lk.ijse.secondSem.hibernate.dao.Custom.Impl.StudentDetailDAOImpl;
 import lk.ijse.secondSem.hibernate.dao.Custom.StudentDAO;
+import lk.ijse.secondSem.hibernate.dao.Custom.StudentDetailDAO;
 import lk.ijse.secondSem.hibernate.dto.CourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentCourseDTO;
 import lk.ijse.secondSem.hibernate.dto.StudentDTO;
@@ -24,6 +26,7 @@ public class StudentBoImpl  implements StudentBo {
     SessionFactory sessionFactory;
 
     StudentDAO studentDAO = new StudentDAOImpl();
+    StudentDetailDAO studentDetailDAO = new StudentDetailDAOImpl();
 
 
     public StudentBoImpl(){
@@ -144,6 +147,48 @@ public class StudentBoImpl  implements StudentBo {
 
     }
 
+    @Override
+    public boolean studentAddNewCourse(StudentDTO studentDTO,
+                                       List<StudentCourseDTO> courseDTOList){
+
+        List<StudentCourse> studentCourseList = new ArrayList<>();
+
+        Student student = new Student(studentDTO.getStudentId(),
+                studentDTO.getStudentFName(),
+                studentDTO.getStudentLName(),
+                studentDTO.getAddress() ,
+                studentDTO.getIdNumber(),
+                studentDTO.getGender(),
+                studentDTO.getTotalFee());
+
+
+        for (StudentCourseDTO s1: courseDTOList
+             ) {
+            studentCourseList.add(new StudentCourse(convertStudentType(s1.getStudent()),
+                    convertCourseType2(s1.getCourse()),s1.getDate(),s1.getTime()));
+        }
+
+        boolean b = studentDetailDAO.addNewStudentCourse(student, studentCourseList);
+        return b;
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private Student convertStudentType(StudentDTO studentDTO){
         if(studentDTO!= null){
@@ -167,6 +212,15 @@ public class StudentBoImpl  implements StudentBo {
         }
 
         return courseArrayList;
+    }
+
+
+
+    private Course convertCourseType2(CourseDTO courseDTO){
+        return new Course(courseDTO.getProgramId(),courseDTO.getProgram(),
+                courseDTO.getDuration(),
+                courseDTO.getFee());
+
     }
 
 

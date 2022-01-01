@@ -12,4 +12,6 @@ public interface StudentBo {
     boolean studentAddCourse(StudentDTO studentDTO, List<CourseDTO> studentCoursesDTo, String data,String time);
     List<StudentDTO> getAllStudent();
     boolean updateStudent(StudentDTO studentDTO);
+    public boolean studentAddNewCourse(StudentDTO studentDTO,
+                                       List<StudentCourseDTO> courseDTOList);
 }
