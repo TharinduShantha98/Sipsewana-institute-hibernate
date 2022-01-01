@@ -22,15 +22,31 @@ This project requires Java set up.
 
 These project dashboard,
 In this dashboard has three function.
-            01. student add
-            02. student registration details
-            03. courses details
+
+ 01. student add
+            
+            
+ 02. student registration details
+            
+            
+ 03. courses details
              
 
 <p>
-<img src="src/lk/ijse/secondSem/hibernate/views/assets/readmeImage/readme1.png"  width="200" height="200">
+<img src="src/lk/ijse/secondSem/hibernate/views/assets/readmeImage/readme1.png"  width="400" height="300">
  
 </p>
 
 
-this project , we can add new student and choose courses and count full total course fee.
+This project , we can add new student and choose courses and count full total course fee.
+
+<p>
+<img src="src/lk/ijse/secondSem/hibernate/views/assets/readmeImage/readme2.png"  width="400" height="300">
+ 
+</p>
+
+
+
+
+
+
