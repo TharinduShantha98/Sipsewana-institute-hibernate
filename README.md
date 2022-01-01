@@ -1,31 +1,36 @@
-<style>
-    #main1{
-        font-weight: bold;
-        font-size: 10px;
-    }
-
-
-</style>
 
 
 
-
-<p id="main1">Institute Of IJSE<p>  
+# Institute Of IJSE
 
 second semester CW ORM concept, In this project, I used hibernate.
 
 
-Transformer
+## Transformer
+
+
 these project created for student registration of sipsewana institute.
 
 
-prerequisites
-this project requires Java set up.
+## Prerequisites
 
-####project's function
-this project , we can add new student and choose courses and count full total course fee.
+
+This project requires Java set up.
+
+
+## Project's function 
+
+These project dashboard,
+In this dashboard has three function.
+            01. student add
+            02. student registration details
+            03. courses details
+             
 
 <p>
-<img src="src/lk/ijse/secondSem/hibernate/views/assets/course2.png"  width="400" height="400">
+<img src="src/lk/ijse/secondSem/hibernate/views/assets/readmeImage/readme1.png"  width="200" height="200">
  
 </p>
+
+
+this project , we can add new student and choose courses and count full total course fee.
