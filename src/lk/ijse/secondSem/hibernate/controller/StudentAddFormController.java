@@ -93,6 +93,7 @@ public class StudentAddFormController {
         colFee.setCellValueFactory(new PropertyValueFactory<>("fee"));
 
         setTimeAndDate();
+        btnUpdateStudent.setDisable(true);
 
     }
 
@@ -263,7 +264,8 @@ public class StudentAddFormController {
 
         }
 
-
+        btnUpdateStudent.setDisable(false);
+        btnSave.setDisable(true);
 
     }
 
